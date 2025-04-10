@@ -556,6 +556,20 @@ class Controls:
     """Compute conditional state transitions and execute actions on state transitions"""
 
     self.v_cruise_helper.update_v_cruise(CS, self.enabled, self.is_metric)
+    try:
+      if ((self.sm['liveLocationKalman'].positionGeodetic.value[1] < 126.343415) and (self.sm['liveLocationKalman'].positionGeodetic.value[1] > 126.332676)):
+        if (((self.sm['liveLocationKalman'].positionGeodetic.value[0] < 36.646500) and (self.sm['liveLocationKalman'].positionGeodetic.value[0] > 36.644900))
+        or ((self.sm['liveLocationKalman'].positionGeodetic.value[0] < 36.642600) and (self.sm['liveLocationKalman'].positionGeodetic.value[0] > 36.641000))):
+          self.v_cruise_helper.v_cruise_kph = 50
+          self.v_cruise_helper.v_cruise_cluster_kph = 50
+          self.v_cruise_helper.v_cruise_kph_last = 50
+        else:
+          self.v_cruise_helper.v_cruise_kph = 100
+          self.v_cruise_helper.v_cruise_cluster_kph = 100
+          self.v_cruise_helper.v_cruise_kph_last = 100
+  
+    except Exception as e:
+      pass
 
     # decrement the soft disable timer at every step, as it's reset on
     # entrance in SOFT_DISABLING state
