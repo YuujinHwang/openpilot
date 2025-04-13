@@ -12,5 +12,5 @@ fi
 
 export STAGING_ROOT="/data/safe_staging"
 
-export FINGERPRINT=SONATA_LF
+export FINGERPRINT="HYUNDAI SONATA 2020"
 export SKIP_FW_QUERY=1
