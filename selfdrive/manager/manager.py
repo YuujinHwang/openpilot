@@ -70,7 +70,7 @@ def manager_init() -> None:
   params.put("GitBranch", get_short_branch())
   params.put("GitRemote", get_origin())
   params.put_bool("IsTestedBranch", is_tested_branch())
-  params.put_bool("IsReleaseBranch", is_release_branch())
+  params.put_bool("IsReleaseBranch", False)
 
   # set dongle id
   reg_res = register(show_spinner=True)
